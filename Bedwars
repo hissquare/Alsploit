@@ -1492,7 +1492,7 @@ task.spawn(function()
 							local SelfPosition = LocalPlayerHumanoidRootPart.Position + (20 > 14 and (LocalPlayerHumanoidRootPart.Position - EnemyHumanoidRootPart.Position).Magnitude > 14.4 and (CFrame.lookAt(LocalPlayerHumanoidRootPart.Position, EnemyHumanoidRootPart.Position).lookVector * ((LocalPlayerHumanoidRootPart.Position - EnemyHumanoidRootPart.Position).Magnitude - 14)) or Vector3.zero)
 
 							if Settings.KillAura.ToolCheck == false then
-								SwitchItem(Sword.tool)							
+								SwitchItem(Sword.tool)
 
 								KillauraRemote:FireServer({
 									weapon = Sword.tool,
@@ -1735,7 +1735,6 @@ function InfFly()
 		until InfFlying == false
 
 		if not InfFlying or not IsAlive(LocalPlayer) then
-
 			LocalPlayer.Character.PrimaryPart.CFrame = SpoofedCamera.CFrame + Vector3.new(0, 5, 0)		
 			SetCamera(LocalPlayer.Character)
 
@@ -1744,9 +1743,9 @@ function InfFly()
 
 			task.wait(0.025)
 
-			LocalPlayer.Character.HumanoidRootPart.Anchored = false
 			game.Workspace.Gravity = 50
-
+			LocalPlayer.Character.HumanoidRootPart.Anchored = false
+			
 			task.wait(1)
 
 			game.Workspace.Gravity = 196.2
@@ -2357,8 +2356,8 @@ task.spawn(function()
 					task.wait()
 
 					if IsAlive(LocalPlayer) and Settings.Scaffold.Value == true then
-						local Vector = LocalPlayer.Character.HumanoidRootPart.Position + (LocalPlayer.Character.Humanoid.MoveDirection * 3.3) + Vector3.new(0, -math.floor(LocalPlayer.Character.Humanoid.HipHeight * 3), 0)
-						local Position = GetServerPosition(Vector)
+						local ScaffoldCFrame = LocalPlayer.Character.HumanoidRootPart.Position + ((LocalPlayer.Character.Humanoid.MoveDirection) * 3.3) + Vector3.new(0, -math.floor(LocalPlayer.Character.Humanoid.HipHeight * 3), 0)
+						local Position = GetServerPosition(ScaffoldCFrame)
 						local Block = GetBlock()
 
 						if Block then
@@ -2368,7 +2367,7 @@ task.spawn(function()
 				until Callback == false
 			end)
 		end
-
+		
 		if Callback == false then
 			SwordController.isClickingTooFast = ClickingTooFast
 		end
